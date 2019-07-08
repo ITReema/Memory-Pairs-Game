@@ -15,7 +15,6 @@
 		4F553EDB22D0FD46003F1A20 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F553EDA22D0FD46003F1A20 /* Card.swift */; };
 		4F553EDD22D0FE78003F1A20 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F553EDC22D0FE78003F1A20 /* CollectionViewCell.swift */; };
 		4F553EDF22D0FEC5003F1A20 /* Flags.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F553EDE22D0FEC5003F1A20 /* Flags.bundle */; };
-		4F553EE122D1030A003F1A20 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F553EE022D1030A003F1A20 /* Extensions+UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		4F553EDA22D0FD46003F1A20 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4F553EDC22D0FE78003F1A20 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		4F553EDE22D0FEC5003F1A20 /* Flags.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Flags.bundle; sourceTree = "<group>"; };
-		4F553EE022D1030A003F1A20 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 				4F553ECC22D0FD1E003F1A20 /* Main.storyboard */,
 				4F553ECF22D0FD26003F1A20 /* Assets.xcassets */,
 				4F553ED122D0FD26003F1A20 /* LaunchScreen.storyboard */,
-				4F553EE022D1030A003F1A20 /* Extensions+UIView.swift */,
 				4F553ED422D0FD26003F1A20 /* Info.plist */,
 				4F553EDE22D0FEC5003F1A20 /* Flags.bundle */,
 			);
@@ -152,7 +149,6 @@
 				4F553EDB22D0FD46003F1A20 /* Card.swift in Sources */,
 				4F553EDD22D0FE78003F1A20 /* CollectionViewCell.swift in Sources */,
 				4F553EC922D0FD1E003F1A20 /* AppDelegate.swift in Sources */,
-				4F553EE122D1030A003F1A20 /* Extensions+UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

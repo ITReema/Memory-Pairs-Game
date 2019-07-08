@@ -8,13 +8,10 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet var collectionBackground: UIImageView!
     var cards = [URL]()
-    
     var selectedCards = [Card]() {
         didSet {
             if self.selectedCards.count == 2 {
@@ -25,19 +22,17 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionBackground.image = #imageLiteral(resourceName: "Background")
-     
-        findFlags()
+        flags()
     }
     
-    override var prefersStatusBarHidden: Bool { return true }
+    //override var prefersStatusBarHidden: Bool { return true }
     
-    fileprivate func findFlags() {
+    fileprivate func flags() {
         if let paths = Bundle.main.urls(forResourcesWithExtension: "jpg", subdirectory: "Flags.bundle") {
             cards += paths
             cards.shuffle()
-            cards.removeSubrange(6...cards.count - 1)
+            cards.removeSubrange(12...cards.count - 1)
             cards += cards
             cards.shuffle()
         }
@@ -53,11 +48,9 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
             
             cards.forEach { [weak self] card in
                 if let cell = self?.collectionView.cellForItem(at: card.indexPath) as? CollectionViewCell {
-                    
                     UIView.animate(withDuration: 0.3, animations:  {
                         cell.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                     }) { finished in
-                        
                         UIView.animate(withDuration: 0.5, animations: {
                             cell.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                         })
@@ -82,7 +75,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
 }
 
-// MARK: - UICollectionViewDelegate
 extension ViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -112,13 +104,12 @@ extension ViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let padding: CGFloat = 440
-        let size = (UIScreen.main.bounds.width - padding) / 3.5
+        let padding: CGFloat = 350
+        let size = (UIScreen.main.bounds.width - padding) / 5
         return CGSize(width: size, height: size)
     }
 }
 
-// MARK: - UICollectionViewDataSource
 extension ViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -131,8 +122,8 @@ extension ViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell
-            else { fatalError("Unable to dequeue a CollectionViewCell") }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? CollectionViewCell
+            else { fatalError("Error") }
         
         cell.transform = .identity
         cell.isHidden = false
@@ -143,12 +134,25 @@ extension ViewController {
         
         if cell.isHidden {
             cell.isHidden = false
-        } else {
-            print("cell is visible")
         }
         
         return cell
     }
+}
 
+extension UIView {
+    func fillSuperview() {
+        guard let superview = self.superview else { return }
+        translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints
+        if translatesAutoresizingMaskIntoConstraints {
+            autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            frame = superview.bounds
+        } else {
+            topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+            leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
+            rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
+        }
+    }
 }
 
